@@ -1,6 +1,7 @@
+import TodoInput from "../components/todo/TodoInput";
 import { getTodos } from "../lib/api";
 
-export default async function ItmePAge() {
+export default async function ItmePage() {
 
     const todos = await getTodos();
 
@@ -10,6 +11,8 @@ export default async function ItmePAge() {
     return (
         <main>
             <h1>My TodoList</h1>
+
+            <TodoInput />
 
             <section>
               <h2>진행 중</h2>

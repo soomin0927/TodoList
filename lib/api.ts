@@ -1,7 +1,8 @@
-import type { TodoListItem } from "../types/todo";
+import type { CreateTodoRequest, TodoListItem } from "../types/todo";
 
+
+// GET - 항목 목록 조회
 export async function getTodos() : Promise<TodoListItem[]> {
-    // GET - 항목 목록 조회
 
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/items`
@@ -15,8 +16,29 @@ export async function getTodos() : Promise<TodoListItem[]> {
 
 }
 
-export async function createTodo() {
-    // POST - 새로운 항목 추가
+
+// POST - 새로운 항목 추가
+export async function createTodo(
+    data: CreateTodoRequest
+) : Promise<TodoListItem> {
+
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/items`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify(data),
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Todo 항목을 추가하는 데 실패했습니다.");
+    }
+
+    return response.json();
+
 }
 
 export async function getTodo() {
