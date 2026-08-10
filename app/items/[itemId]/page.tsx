@@ -1,3 +1,4 @@
+import TodoEditForm from "../../../components/detail/TodoEditForm";
 import { getTodo } from "../../../lib/api";
 
 interface TodoDetailPageProps {
@@ -11,7 +12,7 @@ export default async function ItmePAge({
 } : TodoDetailPageProps) {
 
     const { itemId } = await params;
-    console.log("itemId : ", itemId);
+    // console.log("itemId : ", itemId);
     
     const todo = await getTodo(Number(itemId));
 
@@ -19,7 +20,9 @@ export default async function ItmePAge({
         <main>
             <h1> {todo.name} </h1>
 
-            <p>
+            <TodoEditForm todo = {todo} />
+
+            {/* <p>
                 상태 : {todo.isCompleted ? "완료" : "진행 중"}
             </p>
 
@@ -35,7 +38,7 @@ export default async function ItmePAge({
                     <h2>이미지</h2>
                     <img src={todo.imageUrl} alt={todo.name} />
                 </section>
-            )}
+            )} */}
 
         </main>
     )
