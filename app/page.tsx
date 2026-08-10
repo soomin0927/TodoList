@@ -6,6 +6,8 @@ export default async function ItmePage() {
 
     const todos = await getTodos();
 
+    // console.log("전체 Todo: ", todos);
+
     const inProgressTodos = todos.filter((todo) => !todo.isCompleted);
     const completedTodos = todos.filter((todo) => todo.isCompleted);
 

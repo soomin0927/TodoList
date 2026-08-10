@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { updateTodo } from "../../lib/api";
 import { TodoListItem } from "../../types/todo";
@@ -11,6 +12,8 @@ interface TodoItemProps {
 export default function TodoItem({ todo }: TodoItemProps) {
 
     const router = useRouter();
+
+    // console.log("Todo : ", todo);
 
     const handleToggle = async () => {
 
@@ -32,7 +35,9 @@ export default function TodoItem({ todo }: TodoItemProps) {
                 {todo.isCompleted ? "✓" : "o"}
             </button>
 
-            <span> {todo.name} </span>
+            <Link href= {`/items/${todo.id}`}>
+                {todo.name}
+            </Link>
         </li>
     )
 
