@@ -1,4 +1,5 @@
 import TodoInput from "../components/todo/TodoInput";
+import TodoItem from "../components/todo/TodoItem";
 import { getTodos } from "../lib/api";
 
 export default async function ItmePage() {
@@ -19,9 +20,8 @@ export default async function ItmePage() {
 
               <ul>
                 {inProgressTodos.map((todo) => (
-                  <li key = {todo.id}>
-                    {todo.name}
-                  </li>
+                  <TodoItem key = {todo.id} todo = {todo} />
+                
                 ))}
               </ul>
 
@@ -32,9 +32,7 @@ export default async function ItmePage() {
 
               <ul>
                 {completedTodos.map((todo) => (
-                  <li key = {todo.id}>
-                    {todo.name}
-                  </li>
+                  <TodoItem key = {todo.id} todo = {todo} />
                 ))}
               </ul>
 
