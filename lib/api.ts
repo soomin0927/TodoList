@@ -1,4 +1,4 @@
-import type { CreateTodoRequest, TodoListItem, UpdateTodoRequest } from "../types/todo";
+import type { CreateTodoRequest, Todo, TodoListItem, UpdateTodoRequest } from "../types/todo";
 
 
 // GET - 항목 목록 조회
@@ -43,9 +43,23 @@ export async function createTodo(
 
 
 // GET - 항목 상세페이지 조회
-export async function getTodo() {
+export async function getTodo(itemId: number) : Promise<Todo> {
+
+
+
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/items/${itemId}`,
+    );
+
+    if (!response.ok) {
+        throw new Error("Todo 항목을 불러오는 데 실패했습니다.");
+    }
+
+    return response.json();
 
 }
+
+
 
 
 // PATCH - 항목 수정
