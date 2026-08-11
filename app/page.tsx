@@ -23,8 +23,8 @@ export default async function ItmePage() {
 
               <TodoInput /> {/* 항목 추가 입력창 */}
 
-              <div className="flex gap-5 w-full">
-                  <section className="mt-3 flex-1">
+              <div className="flex gap-5 w-full my-10">
+                  <section className="flex-1">
                     {/* <h2>진행 중</h2> */}
                     <Image
                       src="/images/todo_img.png"
@@ -33,16 +33,34 @@ export default async function ItmePage() {
                       height={36}
                     />
 
-                    <ul>
-                      {inProgressTodos.map((todo) => (
-                        <TodoItem key = {todo.id} todo = {todo} />
-                        
-                      ))}
-                    </ul>
+                  {inProgressTodos.length === 0 ? (
+                    <div className="flex min-h-[300px] flex-col items-center justify-center text-center">
+                        <Image
+                          src= "/images/todo_empty.png"
+                          alt= "진행 중인 항목 없음"
+                          width={240}
+                          height={240}
+                        />
+
+                        <p className="mt-4 text-slate-400">
+                          할 일이 없어요.
+                          <br />
+                          TODO를 새롭게 추가해주세요!
+                        </p>
+
+                    </div>
+                  ) :  (
+                      <ul>
+                        {inProgressTodos.map((todo) => (
+                          <TodoItem key = {todo.id} todo = {todo} />
+                        ))}
+                      </ul>
+
+                  )}
 
                   </section>
 
-                  <section className="mt-3 flex-1">
+                  <section className="flex-1">
                     {/* <h2>완료</h2> */}
                     <Image
                       src="/images/done_img.png"
@@ -51,12 +69,28 @@ export default async function ItmePage() {
                       height={36}
                     />
 
-                    <ul>
-                      {completedTodos.map((todo) => (
-                        <TodoItem key = {todo.id} todo = {todo} />
-                      ))}
-                    </ul>
+                    {completedTodos.length === 0 ? (
+                      <div className="flex min-h-[300px] flex-col items-center justify-center text-center">
+                          <Image
+                              src="/images/done_empty.png"
+                              alt="완료한 일이 없음"
+                              width={240}
+                              height={240}
+                          />
 
+                          <p className="mt-4 text-slate-400">
+                              아직 다 한 일이 없어요.
+                              <br />
+                              해야 할 일을 체크해보세요!
+                          </p>
+                      </div>
+                  ) : (
+                      <ul>
+                        {completedTodos.map((todo) => (
+                          <TodoItem key = {todo.id} todo = {todo} />
+                        ))}
+                      </ul>
+                  )}
                   </section>
                 </div>
             </div>

@@ -37,7 +37,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
                 mx-auto
                 items-center 
                 gap-4 
-                my-2 
+                mt-4
                 px-3
                 h-[50px]
                 border-2 border-slate-900
