@@ -1,5 +1,4 @@
 
-import Header from "../../../components/common/Header";
 import TodoEditForm from "../../../components/detail/TodoEditForm";
 import { getTodo } from "../../../lib/api";
 
@@ -21,8 +20,6 @@ export default async function ItmePage({
 
     return (
         <main>
-
-            <Header />
 
             <div className="mx-auto w-full max-w-[1200px] px-5 py-7 mb-50">
 
