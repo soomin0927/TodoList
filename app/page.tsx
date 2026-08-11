@@ -1,3 +1,4 @@
+import Header from "../components/common/Header";
 import TodoInput from "../components/todo/TodoInput";
 import TodoItem from "../components/todo/TodoItem";
 import { getTodos } from "../lib/api";
@@ -13,7 +14,8 @@ export default async function ItmePage() {
 
     return (
         <main>
-            <h1>My TodoList</h1>
+
+            <Header />
 
             <TodoInput />
 
