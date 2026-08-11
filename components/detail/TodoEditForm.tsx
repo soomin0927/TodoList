@@ -23,6 +23,12 @@ export default function TodoEditForm({
     const [image, setImage] = useState<File | null>(null);
     const [inputWidth, setInputWidth] =useState(0);
 
+    const isChanged =
+        name !== todo.name ||
+        isCompleted !== todo.isCompleted ||
+        memo !== (todo.memo ?? "") ||
+        image !== null;
+
     useEffect(() => {
         if (!inputRef.current) return;
 
@@ -318,20 +324,21 @@ export default function TodoEditForm({
             <div className="flex gap-3 mt-7 justify-center md:justify-end">
                 <button 
                     type="submit"
-                    className="
+                    className= {`
                         flex
                         items-center
                         justify-center
                         gap-2
                         rounded-full
                         border-2 border-slate-900
-                        bg-slate-200
                         px-9 
                         py-3
                         text-slate-900
+                        font-bold
                         shadow-[4px_4px_0px_#0F172A]
                         disabled:opacity-50
-                        "
+                        ${isChanged ? "bg-lime-300" : "bg-slate-200"}
+                    `}
                 >   
                     <img src="/icons/check.png" width={16} height={16} />
                     수정 완료
@@ -351,6 +358,7 @@ export default function TodoEditForm({
                         px-9 
                         py-3
                         text-white
+                        font-bold
                         shadow-[4px_4px_0px_#0F172A]
                         disabled:opacity-50
                     "
