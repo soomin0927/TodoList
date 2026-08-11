@@ -1,4 +1,4 @@
-import type { CreateTodoRequest, Todo, TodoListItem, UpdateTodoRequest } from "../types/todo";
+import type { CreateTodoRequest, ImageUploadResponse, Todo, TodoListItem, UpdateTodoRequest } from "../types/todo";
 
 
 // GET - 항목 목록 조회
@@ -60,8 +60,6 @@ export async function getTodo(itemId: number) : Promise<Todo> {
 }
 
 
-
-
 // PATCH - 항목 수정
 export async function updateTodo(
     itemId: number,
@@ -94,7 +92,30 @@ export async function deleteTodo() {
 
 
 // POST - 이미지 파일 업로드
-export async function uploadImage() {
+export async function uploadImage(
+    file: File
+): Promise<ImageUploadResponse> {
+
+    const formData = new FormData();
+
+    formData.append("image", file);
+
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/images/upload`,
+        {
+            method: "POST",
+            body: formData,
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("이미지 업로드에 실패했습니다.");
+    }
+
+    return response.json();
+
+
+
      
 }
 
