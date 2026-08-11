@@ -40,7 +40,7 @@ export default function TodoInput() {
   return (
     <form 
         onSubmit={handleSubmit}
-        className="flex mx-auto w-full max-w-[1200px] gap-4 h-[56px] my-7"
+        className="flex mx-auto w-full gap-4 h-[56px] mb-7"
     >
       <input
         type="text"

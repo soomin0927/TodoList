@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import Header from "../components/common/Header";
 import TodoInput from "../components/todo/TodoInput";
 import TodoItem from "../components/todo/TodoItem";
@@ -17,30 +19,47 @@ export default async function ItmePage() {
 
             <Header />
 
-            <TodoInput />
+            <div className="mx-auto w-full max-w-[1200px] px-5 py-7">
 
-            <section>
-              <h2>진행 중</h2>
+              <TodoInput /> {/* 항목 추가 입력창 */}
 
-              <ul>
-                {inProgressTodos.map((todo) => (
-                  <TodoItem key = {todo.id} todo = {todo} />
-                
-                ))}
-              </ul>
+              <div className="flex gap-5 w-full">
+                  <section className="mt-3 flex-1">
+                    {/* <h2>진행 중</h2> */}
+                    <Image
+                      src="/images/todo_img.png"
+                      alt="진행 중인 항목 영역"
+                      width={101}
+                      height={36}
+                    />
 
-            </section>
+                    <ul>
+                      {inProgressTodos.map((todo) => (
+                        <TodoItem key = {todo.id} todo = {todo} />
+                        
+                      ))}
+                    </ul>
 
-            <section>
-              <h2>완료</h2>
+                  </section>
 
-              <ul>
-                {completedTodos.map((todo) => (
-                  <TodoItem key = {todo.id} todo = {todo} />
-                ))}
-              </ul>
+                  <section className="mt-3 flex-1">
+                    {/* <h2>완료</h2> */}
+                    <Image
+                      src="/images/done_img.png"
+                      alt="완료한 항목 영역"
+                      width={101}
+                      height={36}
+                    />
 
-            </section>
+                    <ul>
+                      {completedTodos.map((todo) => (
+                        <TodoItem key = {todo.id} todo = {todo} />
+                      ))}
+                    </ul>
+
+                  </section>
+                </div>
+            </div>
         </main>
     );
 }

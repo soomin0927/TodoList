@@ -33,12 +33,12 @@ export default function TodoItem({ todo }: TodoItemProps) {
     return (
         <li className= {`
                 flex 
+                w-full
                 mx-auto
                 items-center 
                 gap-4 
                 my-2 
                 px-3
-                w-[800px] // 임의로 길이 설정 (후에 변경 예정)
                 h-[50px]
                 border-2 border-slate-900
                 rounded-full
