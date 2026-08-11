@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { updateTodo, uploadImage } from "../../lib/api";
+import { deleteTodo, updateTodo, uploadImage } from "../../lib/api";
 import { Todo } from "../../types/todo";
 
 interface TodoEditFormProps {
@@ -38,6 +38,16 @@ export default function TodoEditForm({
                 isCompleted,
                 imageUrl,
             });
+
+            router.push("/");
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            await deleteTodo(todo.id);
 
             router.push("/");
         } catch (error) {
@@ -120,6 +130,10 @@ export default function TodoEditForm({
 
             <button type="submit">
                 -수정하기-
+            </button>
+
+            <button type="button" onClick={handleDelete}>
+                X삭제하기X
             </button>
         </form>
     );

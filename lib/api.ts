@@ -2,7 +2,7 @@ import type { CreateTodoRequest, ImageUploadResponse, Todo, TodoListItem, Update
 
 
 // GET - 항목 목록 조회
-export async function getTodos() : Promise<TodoListItem[]> {
+export async function getTodos(): Promise<TodoListItem[]> {
 
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/items`
@@ -20,7 +20,7 @@ export async function getTodos() : Promise<TodoListItem[]> {
 // POST - 새로운 항목 추가
 export async function createTodo(
     data: CreateTodoRequest
-) : Promise<TodoListItem> {
+): Promise<TodoListItem> {
 
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/items`,
@@ -43,7 +43,7 @@ export async function createTodo(
 
 
 // GET - 항목 상세페이지 조회
-export async function getTodo(itemId: number) : Promise<Todo> {
+export async function getTodo(itemId: number): Promise<Todo> {
 
 
 
@@ -86,7 +86,18 @@ export async function updateTodo(
 
 
 // DELETE - 항목 삭제
-export async function deleteTodo() {
+export async function deleteTodo(itemId: number): Promise<void> {
+
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/items/${itemId}`,
+        {
+            method: "DELETE",
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Todo 항목을 수정하는 데 실패했습니다.");
+    }
     
 }
 
