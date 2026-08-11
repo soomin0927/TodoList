@@ -33,12 +33,14 @@ export default async function ItmePAge({
                 </p>
             </section>
 
+             */}
+
             {todo.imageUrl && (
                 <section>
                     <h2>이미지</h2>
-                    <img src={todo.imageUrl} alt={todo.name} />
+                    <img src={todo.imageUrl} alt={todo.name} width={500}/>
                 </section>
-            )} */}
+            )}
 
         </main>
     )
