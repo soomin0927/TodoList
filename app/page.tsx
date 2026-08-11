@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import Header from "../components/common/Header";
 import TodoInput from "../components/todo/TodoInput";
 import TodoItem from "../components/todo/TodoItem";
 import { getTodos } from "../lib/api";
@@ -16,8 +15,6 @@ export default async function ItmePage() {
 
     return (
         <main>
-
-            <Header />
 
             <div className="mx-auto w-full max-w-[1200px] px-5 py-7">
 
