@@ -1,3 +1,5 @@
+
+import Header from "../../../components/common/Header";
 import TodoEditForm from "../../../components/detail/TodoEditForm";
 import { getTodo } from "../../../lib/api";
 
@@ -7,7 +9,7 @@ interface TodoDetailPageProps {
     }>;
 }
 
-export default async function ItmePAge({
+export default async function ItmePage({
     params,
 } : TodoDetailPageProps) {
 
@@ -16,32 +18,17 @@ export default async function ItmePAge({
     
     const todo = await getTodo(Number(itemId));
 
+
     return (
         <main>
-            <h1> {todo.name} </h1>
 
-            <TodoEditForm todo = {todo} />
+            <Header />
 
-            {/* <p>
-                상태 : {todo.isCompleted ? "완료" : "진행 중"}
-            </p>
+            <div className="mx-auto w-full max-w-[1200px] px-5 py-7 mb-50">
 
-            <section>
-                <h2>메모</h2>
-                <p>
-                    {todo.memo || "메모가 없습니다."}
-                </p>
-            </section>
+                <TodoEditForm todo = {todo} />
 
-             */}
-
-            {todo.imageUrl && (
-                <section>
-                    <h2>이미지</h2>
-                    <img src={todo.imageUrl} alt={todo.name} width={500}/>
-                </section>
-            )}
-
+            </div>
         </main>
     )
 }
