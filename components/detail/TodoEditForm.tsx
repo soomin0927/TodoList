@@ -10,6 +10,7 @@ interface TodoEditFormProps {
     todo: Todo; 
 }
 
+// 상세페이지 수정 폼 
 export default function TodoEditForm({
     todo,
 }: TodoEditFormProps) {

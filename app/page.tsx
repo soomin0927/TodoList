@@ -4,7 +4,9 @@ import TodoInput from "../components/todo/TodoInput";
 import TodoItem from "../components/todo/TodoItem";
 import { getTodos } from "../lib/api";
 
-export default async function ItmePage() {
+
+// "/" 페이지
+export default async function ItemPage() {
 
     const todos = await getTodos();
 

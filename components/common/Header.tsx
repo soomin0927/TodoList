@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// Header / 로고
 export default function Header() {
     return (
         <header className="h-[60px] border-b border-gray-200"> 

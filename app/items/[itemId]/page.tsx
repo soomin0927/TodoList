@@ -8,6 +8,7 @@ interface TodoDetailPageProps {
     }>;
 }
 
+// 상세페이지
 export default async function ItmePage({
     params,
 } : TodoDetailPageProps) {
