@@ -10,6 +10,8 @@ interface TodoItemProps {
     todo: TodoListItem;
 }
 
+
+// 항목 조회 
 export default function TodoItem({ todo }: TodoItemProps) {
 
     const router = useRouter();
