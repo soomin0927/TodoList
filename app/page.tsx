@@ -20,8 +20,8 @@ export default async function ItmePage() {
 
               <TodoInput /> {/* 항목 추가 입력창 */}
 
-              <div className="flex gap-5 w-full my-10">
-                  <section className="flex-1">
+              <div className="flex flex-col gap-5 w-full my-10 lg:flex-row">
+                  <section className="mt-3 min-w-0 flex-1">
                     {/* <h2>진행 중</h2> */}
                     <Image
                       src="/images/todo_img.png"
@@ -57,7 +57,7 @@ export default async function ItmePage() {
 
                   </section>
 
-                  <section className="flex-1">
+                  <section className="mt-3 min-w-0 flex-1">
                     {/* <h2>완료</h2> */}
                     <Image
                       src="/images/done_img.png"
