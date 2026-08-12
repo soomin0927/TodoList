@@ -5,7 +5,10 @@ import type { CreateTodoRequest, ImageUploadResponse, Todo, TodoListItem, Update
 export async function getTodos(): Promise<TodoListItem[]> {
 
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/items`
+        `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANT_ID}/items`,
+        {
+            cache: "no-store",
+        }
     );
 
     if (!response.ok) {
